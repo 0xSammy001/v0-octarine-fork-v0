@@ -1,7 +1,7 @@
 import { Twitter } from "./icons"
 
 const OctarineLogoIcon = () => (
-  <svg width="32" height="32" viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg" className="brightness-0">
+  <svg width="28" height="28" viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg" className="brightness-0">
     <g transform="rotate(0)">
       <path d="M 0 -25 L 15 -55 L 0 -75 L -15 -55 Z" fill="#3b82f6" stroke="none" />
     </g>
@@ -42,9 +42,9 @@ export function Footer() {
           <div className="flex flex-col items-center text-center">
             {/* Brand Section */}
             <div className="animate-fade-in">
-              <div className="flex items-center gap-2 mb-3 justify-center">
+              <div className="flex items-center gap-1 mb-3 justify-center">
                 <OctarineLogoIcon />
-                <span className="text-xl font-bold text-black">Octarine</span>
+                <span className="text-xl font-bold text-black tracking-tight">Octarine</span>
               </div>
               <p className="text-muted-foreground leading-relaxed mb-6">© 2025 Octarine. All rights reserved.</p>
               <div className="flex items-center gap-4 justify-center">

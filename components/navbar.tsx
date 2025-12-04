@@ -1,7 +1,9 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { WaitlistModal } from "@/components/waitlist-modal"
 
 const OctarineLogoIcon = () => (
   <svg width="28" height="28" viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg" className="brightness-0">
@@ -33,27 +35,43 @@ const OctarineLogoIcon = () => (
 )
 
 export function Navbar() {
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
-      <div className="px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-1">
-            <div className="text-black">
-              <OctarineLogoIcon />
-            </div>
-            <span className="text-xl font-bold text-black tracking-tight">Octarine</span>
-          </Link>
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
 
-          <div className="flex items-center gap-8">
-            <Button
-              size="sm"
-              className="rounded-lg bg-blue-500 text-white cursor-not-allowed opacity-50 hover:opacity-50"
-            >
-              Coming Soon
-            </Button>
+  return (
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+        <div className="px-6 lg:px-12">
+          <div className="max-w-7xl mx-auto flex h-16 items-center justify-between">
+            <Link href="/" className="flex items-center gap-1">
+              <div className="text-black">
+                <OctarineLogoIcon />
+              </div>
+              <span className="text-xl font-bold text-black tracking-tight">Octarine</span>
+            </Link>
+
+            <div className="flex items-center gap-8">
+              <Link href="/docs">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="rounded-lg text-gray-600 font-medium hover:bg-gray-100 hover:text-gray-900"
+                >
+                  Docs
+                </Button>
+              </Link>
+              <Button
+                size="sm"
+                className="rounded-lg bg-gradient-to-r from-primary to-blue-600 text-white cursor-pointer shadow-[0_0_20px_rgba(41,115,255,0.4)] hover:from-blue-400 hover:to-blue-500 transition-all"
+                onClick={() => setIsWaitlistOpen(true)}
+              >
+                Join Waitlist
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      <WaitlistModal isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
+    </>
   )
 }
